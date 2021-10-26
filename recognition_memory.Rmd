@@ -22,8 +22,7 @@ library(dplyr)
 
 ```{r }
 
-attach()
-
+attach(subj_test)
 str(subj_test)
 subj_test$Response...3 <- as.factor(subj_test$Response...3)
 names(subj_test)[names(subj_test) == "Response...3"] <- "response" ##Revising Variable Names
@@ -34,121 +33,67 @@ str_sub(Picture, 2, 2)
 ##Creating New Vectors For the Calculations
 
 subj_test$new_old[str_sub(Picture, 2, 2) == 1] <- "old" #if the stimulus is shown in encoding or #not. "old" shows that the respondent already have seen the stimulus in encoding part. 
-
 subj_test$new_old[str_sub(Picture, 2, 2) == 2] <- "new" #if the stimulus is shown in encoding or #not. "new" shows that the respondent have first seen the stimulus in testing. 
-
 subj_test$emotion[str_sub(Picture, 1, 1) == "E"] <- "emotional" #if the picture is emotional or #neutral. 
-
 subj_test$emotion[str_sub(Picture, 1, 1) == "N"] <- "neutral" #if the picture is emotional or #neutral. 
-
 subj_test$new_old <- as.factor(subj_test$new_old) #changing the variable type to factor. 
-
 subj_test$emotion <- as.factor(subj_test$emotion) #changing the variable type to factor. 
-
 subj_test$remember <- (subj_test$new_old == "old")&subj_test$response == "7" #"response" variable is including 7=remember, 8=know and 9=new. This created new vector enables us to to see the count of responses with as answered as "remember" for old stimuli. It is "old" stimuli because here we are testing the memory for encoded events.
-
 subj_test$remember <- as.integer(subj_test$remember)
-
 subj_test$know <- (subj_test$new_old == "old")&subj_test$response == "8" #This created new vector enables us to to see the count of responses with as answered as "know" for old stimuli. It is "old" stimuli because here we are testing the memory for encoded events.
-
 subj_test$know <- as.integer(subj_test$know)
-
 subj_test$remknow <- (subj_test$remember == "1") | (subj_test$know == "1") #This created to see the sum of trials as answered either as "remember" or "know". Subject can select just "remember", "know" or "new". This is to remind that "response variable(7 = remember/8 = know/9 = new ) is a binary variable.
-
 subj_test$remknow <- as.integer(subj_test$remknow)
-
 sum(subj_test$remknow) #this line is just to check if the everything is aligning with Excel file.
-
 subj_test$FA_rem <- (subj_test$new_old == "new") & (subj_test$response == "7") #this vector incicates that the subject is responsing as "remember" which actually a new stimuli (not seen in encoding part).
-
 subj_test$FA_know <- (subj_test$new_old == "new") & (subj_test$response == "8") #this vector incicates that the subject is responsing as "know" which actually a new stimuli (not seen in encoding part).
-
 subj_test$FA_rem <- as.integer(subj_test$FA_rem)
-
 subj_test$FA_know<- as.integer(subj_test$FA_know)
-
 subj_test$FA_total <- (subj_test$FA_rem == "1") | (subj_test$FA_know == "1")  #here we are summing the al false alarms.
-
 subj_test$FA_total<- as.integer(subj_test$FA_total)
-
 sum(subj_test$FA_total) #this line is just to check if the everything is aligning with Excel file.
-
 sum(subj_test$FA_know) #this line is just to check if the everything is aligning with Excel file.
-
 subj_test$correct_rej <- (subj_test$new_old == "new") & (subj_test$response == "9")
-
 subj_test$correct_rej <- as.integer(subj_test$correct_rej)
-
 sum(subj_test$correct_rej) #this line is just to check if the everything is aligning with Excel file.
-
 subj_test$miss <- (subj_test$new_old == "old") & (subj_test$response == "9") #missed trials are indicating that subject is responding as "new" to stimuli which is actually shown in encoding part.
-
 subj_test$miss <- as.integer(subj_test$miss)
-
 sum(subj_test$miss) #this line is just to check if the everything is aligning with Excel file.
-
 subj_test$accuracy_color <- (subj_test$correct_response == subj_test$response_color) #we are calculating if the respondent answered correctly the question of the color of the frame. 
-
 subj_test$accuracy_color <- as.integer(subj_test$accuracy_color)
-
 sum(subj_test$accuracy_color) #this line is just to check if the everything is aligning with Excel file.
-
 subj_test$rem.scene.color <- (subj_test$remember == "1") & (subj_test$accuracy_color == "1") #in order to count the trials which subject is answering the color frame correctly for "remember trials"-refer line 32 if needed.
-
 subj_test$rem.scene.color <- as.integer(subj_test$rem.scene.color)
-
 subj_test$know.scene.color <- (subj_test$know == "1") & (subj_test$accuracy_color == "1") #in order to count the trials which subject is answering the color frame correctly for "know trials"-refer line 34 if needed.
-
 subj_test$know.scene.color <- as.integer(subj_test$know.scene.color)
-
 sum(subj_test$know.scene.color)
-
 sum(subj_test$rem.scene.color)
-
 sum(subj_test$remknow)
-
 
 ##Calculating Percentages For All Data Frame
 
 
 Hit_all_remknow <- sum(subj_test$remknow)/length(which(subj_test$new_old == "old"))
-
 False.Alarm_remknow<- sum(subj_test$FA_total)/length(which(subj_test$new_old == "old"))
-
 Correct.Rej_remknow <- sum(subj_test$correct_rej)/length(which(subj_test$new_old == "old"))
-
 Miss_remknow <- sum(subj_test$miss)/length(which(subj_test$new_old == "old"))
-
 Hit_rem <- sum(subj_test$remember)/length(which(subj_test$new_old == "old"))
-
 False.Alarm_rem<- sum(subj_test$FA_rem)/length(which(subj_test$new_old == "old"))
-
 Hit_know<- sum(subj_test$know)/length(which(subj_test$new_old == "old"))
-
 False.Alarm_know<- sum(subj_test$FA_know)/length(which(subj_test$new_old == "old"))
-
 Recollection <- Hit_rem -False.Alarm_rem
-
 
 ##Calculating Percentages For Emotional Stimuli
 
 
 subj_test_emotional <- filter(subj_test, emotion == "emotional")
-
 Hit_all_remknow_E <- sum(subj_test_emotional$remknow)/length(which(subj_test_emotional$new_old == "old"))
-
 False.Alarm_remknow_E<- sum(subj_test_emotional$FA_total)/length(which(subj_test_emotional$new_old == "old"))
-
 Correct.Rej_remknow_E <- sum(subj_test_emotional$correct_rej)/length(which(subj_test_emotional$new_old == "old"))
-
 Miss_remknow_E <- sum(subj_test_emotional$miss)/length(which(subj_test_emotional$new_old == "old"))
-
 Hit_rem_E <- sum(subj_test_emotional$remember)/length(which(subj_test_emotional$new_old == "old"))
-
 False.Alarm_rem_E<- sum(subj_test_emotional$FA_rem)/length(which(subj_test_emotional$new_old == "old"))
-
 Hit_know_E<- sum(subj_test_emotional$know)/length(which(subj_test_emotional$new_old == "old"))
-
 Recollection_E <- Hit_rem_E -False.Alarm_rem_E
 
 
@@ -157,18 +102,12 @@ Recollection_E <- Hit_rem_E -False.Alarm_rem_E
 
 subj_test_neutral <- filter(subj_test, emotion == "neutral")
 Hit_all_remknow_N <- sum(subj_test_neutral$remknow)/length(which(subj_test_neutral$new_old == "old"))
-
 False.Alarm_remknow_N<- sum(subj_test_neutral$FA_total)/length(which(subj_test_neutral$new_old == "old"))
-
 Correct.Rej_remknow_N <- sum(subj_test_neutral$correct_rej)/length(which(subj_test_neutral$new_old == "old"))
 Miss_remknow_N <- sum(subj_test_neutral$miss)/length(which(subj_test_neutral$new_old == "old"))
-
 Hit_rem_N <- sum(subj_test_neutral$remember)/length(which(subj_test_neutral$new_old == "old"))
-
 False.Alarm_rem_N<- sum(subj_test_neutral$FA_rem)/length(which(subj_test_neutral$new_old == "old"))
-
 Hit_know_N<- sum(subj_test_neutral$know)/length(which(subj_test_neutral$new_old == "old"))
-
 Recollection_N <- Hit_rem_N -False.Alarm_rem_N
 
 subj_w <- cbind(Hit_all_remknow, False.Alarm_remknow, Correct.Rej_remknow, Miss_remknow,
