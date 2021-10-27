@@ -112,8 +112,8 @@ Recollection_N <- Hit_rem_N -False.Alarm_rem_N
 
 subj_w <- cbind(Hit_all_remknow, False.Alarm_remknow, Correct.Rej_remknow, Miss_remknow,
                 Hit_rem,False.Alarm_rem, Hit_know, False.Alarm_know, Recollection, Hit_all_remknow_E, False.Alarm_remknow_E, Correct.Rej_remknow_E, Miss_remknow_E,
-               Hit_rem_E,False.Alarm_rem_E, Hit_know_E, False.Alarm_know_E, Recollection_E,
-                Hit_all_remknow_N, False.Alarm_remknow_N, Correct.Rej_remknow_N, Miss_remknow_N, Hit_rem_N,False.Alarm_rem_N, Hit_know_N, False.Alarm_know_N, Recollection_N)
+                Hit_rem_E,False.Alarm_rem_E, Hit_know_E, Recollection_E,
+                Hit_all_remknow_N, False.Alarm_remknow_N, Correct.Rej_remknow_N, Miss_remknow_N, Hit_rem_N,False.Alarm_rem_N, Hit_know_N, Recollection_N)
 
 ```
 
