@@ -7,6 +7,8 @@ output: html_document
 install.packages(c("R.matlab", "stringr", "splitstackshape", "writexl", "dplyr", "tidyr", "tidyverse"))
 ```
 
+## Input variables: 1)subjnum_DistractionTask.csv file (encoding phase) 2)subjnum_dataOut.mat (testing phase) file 3)stimuli_set.xlsx file(fixed values to use for all subjects. This file contains the parameters about stimuli (stimuli name, social vs unsocial, negative vs neutral).
+
 ## Data Arrangement
 
 ```{r }
