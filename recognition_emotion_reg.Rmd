@@ -303,6 +303,24 @@ Let`s first combine every new variables that we have. Then this new data frame t
 
 ```{r pressure, echo=FALSE}
 
+Hit_all_remknow, False.Alarm_remknow, Correct.Rej_remknow, Miss_remknow,
+                       Hit_rem, False.Alarm_rem, Hit_know, False.Alarm_know, Recollection, hit_remknow_neg,
+                       false.Alarm_remknow_neg, correct.rej_remknow_neg, miss_remknow_neg, hit_rem_neg,
+                       false.alarm_rem_neg, hit_know_neg, recollection_neg, hit_remknow_neutr, false.Alarm_remknow_neutr,
+                       correct.rej_remknow_neutr, miss_remknow_neutr, hit_rem_neutr, false.alarm_rem_neutr, hit_know_neutr,
+                       recollection_neutr, hit_remknow_look_neg, false.Alarm_remknow_look_neg, correct.rej_remknow_look_neg,
+                       miss_remknow_look_neg, hit_rem_look_neg, false.alarm_rem_look_neg, hit_know_look_neg, recollection_look_neg,
+                       hit_remknow_rapp_neg, false.Alarm_remknow_reapp_neg, correct.rej_remknow_reapp_neg,
+                       miss_remknow_reapp_neg, hit_rem_reapp_neg, false.alarm_rem_reapp_neg, hit_know_reapp_neg, recollection_reapp_neg, 
+                       hit_remknow_dist_neg, false.Alarm_remknow_dist_neg, correct.rej_remknow_dist_neg, miss_remknow_dist_neg,
+                       hit_rem_dist_neg, false.alarm_rem_dist_neg, hit_know_dist_neg, recollection_dist_neg, hit_remknow_look_neu,
+                       false.Alarm_remknow_look_neu, correct.rej_remknow_look_neu , miss_remknow_look_neu , hit_rem_look_neu,
+                       false.alarm_rem_look_neu, hit_know_look_neu, recollection_look_neu, mean_stars_all, mean_stars_neg,
+                       mean_stars_neutral, mean_stars_neg_emo_reg_look, mean_stars_neg_emo_reg_reapp, mean_stars_neg_emo_reg_dist,
+                       mean_stars_neu_emo_reg_look, one_idk_R, two_idk_R, three_idk_R, four_idk_R, five_idk_R, six_idk_K,
+                       seven_idk_K, eight_idk_K, nine_idk_K, ten_idk_K, eleven_idk_RK, twelve_idk_RK, thirteen_idk_RK, fourteen_idk_RK,
+                       fifteen_idk_RK, sixteen_wr_R, seventeen_wr_R, eighteen_wr_R, nineteen_wr_R)
+
 View(all_together)
 
 write_xlsx(all_together, "/Users/neslihanonay/Desktop/Ulrike_internship/Data/Model/Disney/subj_number.xlsx") #two things to update: path(put your own path, and subject number)
