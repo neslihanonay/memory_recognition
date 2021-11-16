@@ -191,6 +191,89 @@ false.alarm_rem_look_neu<- sum(neu_emo_reg_look$FA_rem)/length(which(neu_emo_reg
 hit_know_look_neu<- sum(neu_emo_reg_look$know)/length(which(neu_emo_reg_look$new_old == "old"))
 recollection_look_neu <- hit_rem_look_neu  - false.alarm_rem_look_neu
 ```
+###Below lines are the explanations of the variables created from line 239 to 274.
+```{r pressure, echo=FALSE}
+#Below calculations will cover below variables:
+#Sum of "Remember" Responses for
+#1)source memory is answered as "I don't know" and for correct "Remember" for all.
+#2)source memory is answered as "I don't know" and for correct "Remember" for "negative" images for "look" condition.
+#3)source memory is answered as "I don't know" and for correct "Remember" for "negative" images for "distract" condition.
+#4)source memory is answered as "I don't know" and for correct "Remember" for "negative" images for "reappraise" condition.
+#5)source memory is answered as "I don't know" and for correct "Remember" for "neutral" images.
+
+#Sum of "Know" Responses for
+#6)source memory is answered as "I don't know" and for correct "Know" for all.
+#7)source memory is answered as "I don't know" and for correct "Know" for "negative" images for "look" condition.
+#8)source memory is answered as "I don't know" and for correct "Know" for "negative" images for "distract" condition.
+#9)source memory is answered as "I don't know" and for correct "Know" for "negative" images for "reappraise" condition.
+#10)source memory is answered as "I don't know" and for correct "Know" for "neutral" images.
+
+#Sum of "Remember or Know" Responses for
+#11)source memory is answered as "I don't know" and for correct "Remember or Know" for all.
+#12)source memory is answered as "I don't know" and for correct "Remember or Know" for "negative" images for "look" condition.
+#13)source memory is answered as "I don't know" and for correct "Remember or Know" for "negative" images for "distract" condition.
+#14)source memory is answered as "I don't know" and for correct "Remember or Know" for "negative" images for "reappraise" condition.
+#15)source memory is answered as "I don't know" and for correct "Remember or Know" for "neutral" images.
+
+#Sum of "Remember" Responses for
+#16)source memory is answered as wrong and for correct "Remember" for all.
+#17)source memory is answered as wrong and for correct "Remember" for "negative" images for "look" condition.
+#18)source memory is answered as wrong and for correct "Remember" for "negative" images for "distract" condition.
+#19)source memory is answered as wrong and for correct "Remember" for "negative" images for "reappraise" condition.
+#20)source memory is answered as wrong and for correct "Remember" for "neutral" images.
+
+#Sum of "Know" Responses for
+#21)source memory is answered as wrong and for correct "Know" for all.
+#22)source memory is answered as wrong and for correct "Know" for "negative" images for "look" condition.
+#23)source memory is answered as wrong and for correct "Know" for "negative" images for "distract" condition.
+#24)source memory is answered as wrong and for correct "Know" for "negative" images for "reappraise" condition.
+#25)source memory is answered as wrong and for correct "Know" for "neutral" images.
+
+#Sum of "Remember or Know" Responses for
+#26)source memory is answered as wrong and for correct "Remember or Know" for all.
+#27)source memory is answered as wrong and for correct "Remember or Know" for "negative" images for "look" condition.
+#28)source memory is answered as wrong and for correct "Remember or Know" for "negative" images for "distract" condition.
+#29)source memory is answered as wrong and for correct "Remember or Know" for "negative" images for "reappraise" condition.
+#30)source memory is answered as wrong and for correct "Remember or Know" for "neutral" images.
+
+one_idk_R <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"),14])
+two_idk_R <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="look"),14])
+three_idk_R <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="distract"),14])
+four_idk_R <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="reappraise"),14])
+five_idk_R <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Neutral"),14])
+
+six_idk_K <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"),15])
+seven_idk_K <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="look"),15])
+eight_idk_K <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="distract"),15])
+nine_idk_K <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="reappraise"),15])
+ten_idk_K <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Neutral"),15])
+
+eleven_idk_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"),16])
+twelve_idk_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="look"),16])
+thirteen_idk_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="distract"),16])
+fourteen_idk_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="reappraise"),16])
+fifteen_idk_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== "4"&emo_ef_clean$new_old =="old"&emo_ef_clean$mgType == "Neutral"),16])
+
+sixteen_wr_R <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"),14])
+seventeen_wr_R <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="look"),14])
+eighteen_wr_R <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="distract"),14])
+nineteen_wr_R <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="reappraise"),14])
+twenty_wr_R <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Neutral"),14])
+
+twntone_wr_K <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"),15])
+twntwo_wr_K <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="look"),15])
+twnthree_wr_K <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="distract"),15])
+twntfour_wr_K <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="reappraise"),15])
+twntfive_wr_K <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Neutral"),15])
+
+twnsix_wr_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"),16])
+twntsvn_wr_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="look"),16])
+twnteight_wr_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="distract"),16])
+twntnine_wr_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Negative"&emo_ef_clean$emo_reg_type=="reappraise"),16])
+thirty_wr_RK <- sum(emo_ef_clean[which(emo_ef_clean$source== c(1:3)&emo_ef_clean$new_old =="old"&emo_ef_clean$hit_source=="0"&emo_ef_clean$mgType == "Neutral"),16])
+```
+
+
 
 ###Calculating Stars Caught in Encoding Depending on Emotion Regulation Type
 
